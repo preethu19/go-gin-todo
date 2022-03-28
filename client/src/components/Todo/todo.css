@@ -1,0 +1,23 @@
+.todo-container{
+    margin: 6vh auto;
+    background-color: rgb(253, 249, 249);
+    height: 80vh;
+    box-shadow:  29px 29px 59px #7d7d7d,
+             -29px -29px 59px #ffffff;
+    border-radius: 20px;
+    padding: 20px 10px;
+    max-width: 700px;
+    overflow-y: scroll;
+}
+
+.todo-title{
+    padding: auto;
+    text-align: center;
+}
+
+.empty-task{
+    text-align: center;
+}
+
+
+

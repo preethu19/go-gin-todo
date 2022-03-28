@@ -1,0 +1,31 @@
+.todoitem-list{
+    background-color: rgb(223, 222, 222);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    color: rgb(14, 13, 13);
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todoitem-check, .todoitem-edit, .todoitem-delete{
+    margin: 0;
+    flex: 1;
+}
+
+.todoitem-delete{
+    color: rgb(216, 9, 9);
+}
+
+.todoitem-edit{
+    color: rgb(43, 43, 241);
+}
+
+
+.todoitem-title{
+    font-size: 1rem;
+    font-weight: 500;
+    flex: 9;
+}
