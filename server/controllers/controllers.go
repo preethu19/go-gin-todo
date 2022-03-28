@@ -37,13 +37,19 @@ func CreateTodo() gin.HandlerFunc {
 			CreatedAt: time.Now(),
 		}
 
-		result, err := todoCollection.InsertOne(ctx, newTodo)
+		_, err := todoCollection.InsertOne(ctx, newTodo)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, responses.Response{Status: http.StatusInternalServerError, Message: "error", Data: map[string]interface{}{"data": err.Error()}})
 			return
 		}
 
-		c.JSON(http.StatusCreated, responses.Response{Status: http.StatusCreated, Message: "success", Data: map[string]interface{}{"data": result}})
+		err = todoCollection.FindOne(ctx, bson.M{"_id": newTodo.Id}).Decode(&todo)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, responses.Response{Status: http.StatusInternalServerError, Message: "error", Data: map[string]interface{}{"data": err.Error()}})
+			return
+		}
+
+		c.JSON(http.StatusCreated, responses.Response{Status: http.StatusCreated, Message: "success", Data: map[string]interface{}{"data": todo}})
 	}
 }
 
