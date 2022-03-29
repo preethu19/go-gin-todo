@@ -39,7 +39,7 @@ const Todo = () => {
                 }
                 return todo
             })
-            if(res.data.message=="success"){
+            if(res.data.message==="success"){
                 setTodoItems(updatedTodos)
                 toast.info("task completed")
             }
@@ -57,7 +57,7 @@ const Todo = () => {
         try{
             const res = await axios.delete(`${process.env.REACT_APP_API_URL}/${id}`);
             const newList = [...todoItems].filter((todo)=> todo.id!==id);
-            if(res.data.message=="success"){
+            if(res.data.message==="success"){
                 setTodoItems(newList)
                 toast.error("task deleted")
             }
@@ -100,7 +100,7 @@ const Todo = () => {
     }
 
     const onSubmit = async(titlePresent, todoId) =>{
-        if(titlePresent!=""){
+        if(titlePresent!==""){
             try{
                 let res;
                 if (!edit){
@@ -111,10 +111,10 @@ const Todo = () => {
                     toast.success("task updated")
                 }
                 console.log(res)
-                if (res.data.message=="success"){
+                if (res.data.message==="success"){
                     setTitle("")
                     if(!edit){
-                        const newList = [res.data.data.data, ...todoItems]
+                        const newList = [...todoItems, res.data.data.data]
                         setTodoItems(newList)
                     }
                     else{

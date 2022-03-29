@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"todo-backend/configs"
 	"todo-backend/routes"
 
@@ -24,6 +25,12 @@ func CORSMiddleware() gin.HandlerFunc {
 }
 
 func main() {
+	port := configs.EnvPORT()
+
+	if port == "" {
+		port = "8000"
+	}
+
 	router := gin.Default()
 
 	router.Use(CORSMiddleware())
@@ -33,5 +40,5 @@ func main() {
 	// routes
 	routes.TodoRoute(router)
 
-	router.Run("localhost:5000")
+	router.Run(fmt.Sprintf(":%s", port))
 }

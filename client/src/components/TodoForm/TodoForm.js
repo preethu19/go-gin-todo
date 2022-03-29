@@ -1,8 +1,6 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import './todoForm.css';
-import { toast } from 'react-toastify';
 
 const TodoForm = ({data, edit, id, onSubmit}) => {
     const [titlePresent, setTitlePresent] = useState("");
